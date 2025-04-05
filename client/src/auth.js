@@ -19,7 +19,7 @@ export async function signUp(email, password) {
 
     const { error: insertError } = await supabase.from('users').insert([
       {
-        uid: user.id,
+        id: user.id,
         interests: [],
       },
     ]);
