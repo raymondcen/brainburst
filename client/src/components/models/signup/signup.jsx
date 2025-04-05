@@ -18,7 +18,6 @@ export const AuthForm = () => {
       const { error, data } = await logIn(email, password);
       console.log({ error, data });
     }
-
     setEmail("");
     setPassword("");
   };
@@ -42,7 +41,7 @@ export const AuthForm = () => {
             </>
           ) : (
             <>
-              Already Have An Account{" "}
+              Already have an account?{" "}
               <button onClick={() => setMode("login")} className="text-[#0047AB] hover:underline">Log in</button>
             </>
           )}
