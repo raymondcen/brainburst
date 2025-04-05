@@ -15,9 +15,9 @@ export async function signUp(email, password) {
   // Insert the user
   const user = data.user;
 
-  const { error: insertError } = await supabase.from("users").insert([
+  const { error: insertError } = await supabase.from("profiles").insert([
     {
-      uid: user.id,
+      id: user.id,
       interests: [],
     },
   ]);
