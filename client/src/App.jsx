@@ -1,8 +1,11 @@
-function App() {
+import { UserPage } from './pages/userPage.jsx';
 
+function App() {
   return (
-    <div></div>
-  )
+    <div className="flex">
+      <UserPage />
+    </div>
+  );
 }
 
 export default App
