@@ -1,6 +1,7 @@
 import { Flashcard } from "../components/models/flashCard/flashCard";
 import { useState } from "react";
 import { FlashCardManager } from "../components/models/flashCardManager/flashCardManager";
+import { Navigator } from "../components/models/navigator/navigator";
 
 const flashCardExample1 = {
   category: "Computer Science",
@@ -29,16 +30,21 @@ export const UserPage = () => {
       </div>
 
       {/* Content div */}
-      <div className="flex flex-col items-center mt-[10px] ">
-        <div className="flex md:flex-row flex-col">
-          <Flashcard
-            flashCard={flashCardExample1}
-            isFlipped={isFlipped}
-            setIsFlipped={handleFlip}
-            choices={choices}
-            mode="practice"
-          />
-          <FlashCardManager />
+      <div className="flex flex-row items-center justify-center">
+        <div className="flex flex-col items-center mt-[10px] z-[2]">
+          <div className="flex md:flex-row flex-col">
+            <Flashcard
+              flashCard={flashCardExample1}
+              isFlipped={isFlipped}
+              setIsFlipped={handleFlip}
+              choices={choices}
+              mode="practice"
+            />
+            <FlashCardManager />
+          </div>
+        </div>
+        <div className="z-[1]">
+          <Navigator />
         </div>
       </div>
 
