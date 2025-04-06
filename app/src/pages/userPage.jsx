@@ -1,4 +1,3 @@
-import { Navigator } from "../components/models/navigator/navigator";
 import { InfinteSwiper } from "../components/models/infiniteSwiper/infiniteSwiper";
 import { useState } from "react";
 
