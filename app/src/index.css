@@ -1,12 +1,11 @@
 @import "tailwindcss";
 
-:root {
+@theme {
     --breakpoint-md: 600px;
 }
 
 * {
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 body {

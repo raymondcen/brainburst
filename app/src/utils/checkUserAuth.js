@@ -5,7 +5,7 @@ export const checkUserAuth = async () => {
 
     if (!data || error || !data.user.email_confirmed_at) return null;
 
-    console.log(data.user);
+    // console.log(data.user);
     return data.user;
 };
 

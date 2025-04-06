@@ -1,4 +1,5 @@
 import { AuthForm } from "../components/models/signup/authForm";
+import { About } from "../components/models/about/about";
 import checkUserAuth from "../utils/checkUserAuth";
 import { useEffect } from "react";
 
@@ -15,7 +16,8 @@ export const LandingPage = () => {
     fetchUserAuth();
   }, []);
   return (
-    <div>
+    <div className="flex flex-row">
+      <About/>
       <AuthForm />
     </div>
   );
