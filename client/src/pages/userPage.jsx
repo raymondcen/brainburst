@@ -27,8 +27,10 @@ export const UserPage = () => {
       <div className="flex items-center justify-center">
         <div className="absolute bg-[#003a8b] w-[50vw] h-[50vw] z-[-1] self-center rounded-[764px] min-w-[450px] min-h-[450px] top-[-200px] blur-[100px]"></div>
       </div>
-      <div className="flex flex-col items-center mt-[10px]">
-        <div className="flex flex-row">
+
+      {/* Content div */}
+      <div className="flex flex-col items-center mt-[10px] ">
+        <div className="flex md:flex-row flex-col">
           <Flashcard
             flashCard={flashCardExample1}
             isFlipped={isFlipped}
@@ -39,7 +41,8 @@ export const UserPage = () => {
           <FlashCardManager />
         </div>
       </div>
-      {/* Bottom blurs */}
+
+      {/* Bottom blur */}
       <div>
         <div className="absolute bg-[#003a8b] w-[30vw] h-[30vw] z-[-1] rounded-[764px] bottom-[-50px] right-[-40px] min-w-[250px] min-h-[250px] blur-[100px]"></div>
         <div className="absolute bg-[#003a8b] w-[30vw] h-[30vw] z-[-1] rounded-[764px] bottom-[-50px] left-[-40px] min-w-[250px] min-h-[250px] blur-[100px]"></div>
