@@ -8,8 +8,6 @@ export const LandingPage = () => {
     const fetchUserAuth = async () => {
       const userAuth = await checkUserAuth();
       
-      console.log(userAuth);
-
       if (!userAuth) return;
       window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/userPage`;
     };

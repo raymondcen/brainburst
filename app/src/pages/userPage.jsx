@@ -2,7 +2,6 @@ import { InfinteSwiper } from "../components/models/infiniteSwiper/infiniteSwipe
 import { useState } from "react";
 
 export const UserPage = () => {
-  // fetch cards from database
   const flashCardExample1 = {
     category: "Computer Science",
     term: "Function",
@@ -30,8 +29,6 @@ export const UserPage = () => {
     { card: swiperCardExample },
     { card: swiperCardExample },
   ];
-
-  // console.log(swiperSlides);
 
   return (
     <div className="relative overflow-hidden min-h-screen">

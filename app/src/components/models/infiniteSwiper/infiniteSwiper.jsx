@@ -22,7 +22,7 @@ export const InfinteSwiper = ({ swiperSlides }) => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center overflow-visible">
+    <div className="flex flex-row items-center justify-center">
       <Swiper
         modules={[Mousewheel, Keyboard]}
         mousewheel={{
