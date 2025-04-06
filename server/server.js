@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import dbRoutes from './routes/dbRoutes.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -12,6 +11,5 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use('/api', dbRoutes);
 
 export default app;
