@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AuthForm from "./components/models/signup/authForm"
-import TestPage from "./pages/TestPage";
+import LandingPage from "./pages/landingPage";
+import UserPage from "./pages/userPage";
 import AuthRoute from "./components/authRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AuthForm />} />
+        <Route path="/" element={<LandingPage />} />
         <Route
-          path="/testPage"
+          path="/userPage"
           element={
             <AuthRoute>
-              <TestPage />
+              <UserPage />
             </AuthRoute>
           }
         />
