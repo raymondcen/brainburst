@@ -1,11 +1,15 @@
-import { SignUp } from "./components/models/signup/signup";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthForm } from "./components/models/signup/signup";
 import { TestPage } from "./pages/testPage";
 
 export default function App() {
   return (
-    <div>
-      {/* <SignUp /> */}
-      <TestPage/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthForm />} />
+        {/* delete later */}
+        <Route path="/testPage" element={<TestPage />} /> 
+      </Routes>
+    </Router>
   );
 }
