@@ -1,11 +1,22 @@
 import { IoClose } from "react-icons/io5";
 import { getAllCategory } from "../../../../hooks/dbHooks";
+import { useState, useEffect } from "react";
 
 
 
-const categories = await getAllCategory()
 
 export const CategoryPopUp =({onClose})=>{
+    
+    const[categories, setCategories] = useState([])
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+          const data = await getAllCategory();
+          console.log(data)
+          setCategories(data);
+        };
+        fetchCategories();
+      }, []);
 
     return(
         <div className = "absolute bg-black items-center justify-center">

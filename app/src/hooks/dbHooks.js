@@ -21,13 +21,9 @@ export const getCardData = async () => {
 
 export const getAllCategory = async () => {
     const { data: { user }, error: userError } = await supabase.auth.getUser(); //get user id
-    
+    const { data, error } = await supabase.rpc('get_distinct_categories')
     //sql query
-    const { data, error } = await supabase
-        .from('card')
-        .select('category', {distinct: true })
 
-        // .eq('uid', user.id);
 
     //error catching
     if (error) {
