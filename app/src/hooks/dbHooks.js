@@ -75,7 +75,7 @@ export const deleteCard = async (cardId) => {
     const { data, error } = await supabase
         .from('card')
         .delete()
-        .eq('id', cardId)
+        .eq('cid', cardId)
         // .eq('uid', user.id);
 
     //error catching

@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigator } from "../navigator/navigator";
+import { IconButton } from "../../common/iconButton";
+import { FiTrash2 } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/mousewheel";
 import { Mousewheel, Keyboard } from "swiper/modules";
-import { getCardData } from "../../../hooks/dbHooks";
+import { getCardData, deleteCard } from "../../../hooks/dbHooks";
 import { flashcardToSwiperCard } from "../../../services/flashcardToSwiperCard";
 
 export const InfinteSwiper = () => {
@@ -15,7 +17,6 @@ export const InfinteSwiper = () => {
   useEffect(() => {
     const fetchCards = async () => {
       const data = await getCardData();
-      console.log(data)
       setCards(data);
     };
     fetchCards();
@@ -33,15 +34,31 @@ export const InfinteSwiper = () => {
   const handleSlideNext = () => {
     if (swiperRef.current) {
       swiperRef.current.swiper.slideNext();
-      console.log(cards)
     }
   };
 
   const handleSlidePrev = () => {
     if (swiperRef.current) {
       swiperRef.current.swiper.slidePrev();
-      console.log(cards)
+    }
+  };
 
+  // Delete the current card using activeCard as the index to obtain its cid
+  const handleDeleteCard = async () => {
+    if (cards.length === 0) return;
+    const currentCard = cards[activeCard];
+    const cid = currentCard?.cid; // Using count to extract card id (cid)
+    if (cid) {
+      console.log(`Deleting card with ID: ${cid}`);
+      await deleteCard(cid);
+      const updatedCards = cards.filter((_, index) => index !== activeCard);
+      setCards(updatedCards);
+      // Adjust activeCard if necessary
+      if (updatedCards.length > 0) {
+        setActiveCard(Math.min(activeCard, updatedCards.length - 1));
+      } else {
+        setActiveCard(0);
+      }
     }
   };
 
@@ -51,36 +68,42 @@ export const InfinteSwiper = () => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center">
-      <Swiper
-        modules={[Mousewheel, Keyboard]}
-        mousewheel={{
-          forceToAxis: true,
-          releaseOnEdges: true,
-          thresholdDelta: 20,
-        }}
-        keyboard={{
-          enabled: true,
-          onlyInViewport: false,
-          pageUpDown: true,
-        }}
-        onSlideChange={onSlideChange}
-        ref={swiperRef}
-        className="w-[350px] md:w-[450px] h-[655px] md:h-[620px] z-2"
-        direction={"vertical"}
-        loop={true}
-        slidesPerView={1}
-      >
-        {swiperSlides.map((slide, index) => (
-          <SwiperSlide key={index}>{slide}</SwiperSlide>
-        ))}
-      </Swiper>
-      <Navigator
-        slideUp={handleSlidePrev}
-        slideDown={handleSlideNext}
-        currentCard={activeCard}
-        totalCards={cards.length}
-      />
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-row items-center justify-center">
+        <Swiper
+          modules={[Mousewheel, Keyboard]}
+          mousewheel={{
+            forceToAxis: true,
+            releaseOnEdges: true,
+            thresholdDelta: 20,
+          }}
+          keyboard={{
+            enabled: true,
+            onlyInViewport: false,
+            pageUpDown: true,
+          }}
+          onSlideChange={onSlideChange}
+          ref={swiperRef}
+          className="w-[350px] md:w-[450px] h-[655px] md:h-[620px] z-2"
+          direction={"vertical"}
+          loop={true}
+          slidesPerView={1}
+        >
+          {swiperSlides.map((slide, index) => (
+            <SwiperSlide key={index}>{slide}</SwiperSlide>
+          ))}
+        </Swiper>
+        <Navigator
+          slideUp={handleSlidePrev}
+          slideDown={handleSlideNext}
+          currentCard={activeCard}
+          totalCards={cards.length}
+        />
+      </div>
+      {/* Delete button to remove current card */}
+      <div className="mt-4">
+        <IconButton action={handleDeleteCard} icon={FiTrash2} />
+      </div>
     </div>
   );
 };
