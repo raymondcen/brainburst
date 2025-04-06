@@ -36,7 +36,7 @@ export const Flashcard = ({
 
           {/* Bottom-right: Flip Button */}
           <FaArrowRotateLeft
-            className="text-[50px] absolute bottom-[10px] right-[10px] cursor-pointer z-[1] hover:rotate-180 transition-transform duration-300"
+            className="text-[50px] absolute bottom-[10px] right-[10px] cursor-pointer z-[1] hover:-rotate-270 transition-transform duration-300"
             onClick={handleFlip}
           />
 
@@ -82,7 +82,7 @@ export const Flashcard = ({
 
           {/* Bottom-right: Flip Button */}
           <FaArrowRotateLeft
-            className="text-[50px] absolute bottom-[10px] right-[10px] cursor-pointer z-[1] hover:rotate-180 transition-transform duration-300"
+            className="text-[50px] absolute bottom-[10px] right-[10px] cursor-pointer z-[1] hover:-rotate-270 transition-transform duration-300"
             onClick={handleFlip}
           />
 
