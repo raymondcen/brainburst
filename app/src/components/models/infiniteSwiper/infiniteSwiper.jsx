@@ -1,13 +1,45 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SwiperCard } from "../swiperCard/swiperCard";
 import { Navigator } from "../navigator/navigator";
-import { Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/mousewheel";
+import { Mousewheel, Keyboard } from "swiper/modules";
+import { getCardData } from "../../../hooks/dbHooks";
+import { flashcardToSwiperCard } from "../../../services/flashcardToSwiperCard";
+import { generateChoices } from "../../../services/generateChoices";
 
-export const InfinteSwiper = ({ swiperSlides }) => {
+export const InfinteSwiper = () => {
+  const [cards, setCards] = useState([]);
+  const [activeCard, setActiveCard] = useState(0);
   const swiperRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      const data = await getCardData();
+      setCards(data);
+      setIsLoading(false);
+    };
+    fetchCards();
+  }, []);
+
+  const choices = [
+    { answer: "Choice 1" },
+    { answer: "Choice 2" },
+    { answer: "Choice 3" },
+    { answer: "Choice 4" },
+  ];
+
+  const testingAI = async () => {
+    const term = "Function";
+    const definition = "A block of code designed to perform a particular task.";
+    const response = await generateChoices(term, definition);
+
+    console.log(response);
+  }
+  testingAI();
+
+  const swiperSlides = flashcardToSwiperCard(cards, choices, "learn");
 
   const handleSlideNext = () => {
     if (swiperRef.current) {
@@ -42,13 +74,7 @@ export const InfinteSwiper = ({ swiperSlides }) => {
         slidesPerView={1}
       >
         {swiperSlides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <SwiperCard
-              flashCard={slide.card.flashCard}
-              choices={slide.card.choices}
-              mode={slide.card.mode}
-            />
-          </SwiperSlide>
+          <SwiperSlide key={index}>{slide}</SwiperSlide>
         ))}
       </Swiper>
       <Navigator slideUp={handleSlidePrev} slideDown={handleSlideNext} />

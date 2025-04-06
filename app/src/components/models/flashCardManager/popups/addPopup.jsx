@@ -14,8 +14,8 @@ export const AddPopUp = ({ onClose }) => {
       term,
       def,
     };
-
     addCard(newCard);
+    onClose();
   };
 
   return (
