@@ -6,4 +6,9 @@
 
 * {
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    background: #002251;
 }
