@@ -79,42 +79,30 @@ export const InfinteSwiper = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-row items-center justify-center">
-        <Swiper
-          modules={[Mousewheel, Keyboard]}
-          mousewheel={{
-            forceToAxis: true,
-            releaseOnEdges: true,
-            thresholdDelta: 20,
-          }}
-          keyboard={{
-            enabled: true,
-            onlyInViewport: false,
-            pageUpDown: true,
-          }}
-          onSlideChange={onSlideChange}
-          ref={swiperRef}
-          className="w-[350px] md:w-[450px] h-[655px] md:h-[620px] z-2"
-          direction={"vertical"}
-          loop={true}
-          slidesPerView={1}
-        >
-          {swiperSlides.map((slide, index) => (
-            <SwiperSlide key={index}>{slide}</SwiperSlide>
-          ))}
-        </Swiper>
-        <Navigator
-          slideUp={handleSlidePrev}
-          slideDown={handleSlideNext}
-          currentCard={activeCard}
-          totalCards={cards.length}
-        />
-      </div>
-      {/* Delete button to remove current card */}
-      <div className="mt-4">
-        <IconButton action={handleDeleteCard} icon={FiTrash2} />
-      </div>
+    <div className="flex flex-row items-center justify-center">
+      <Swiper
+        modules={[Mousewheel, Keyboard]}
+        mousewheel={{
+          forceToAxis: true,
+          releaseOnEdges: true,
+          thresholdDelta: 50,
+        }}
+        keyboard={{
+          enabled: true,
+          onlyInViewport: false,
+          pageUpDown: true,
+        }}
+        ref={swiperRef}
+        className="w-[350px] md:w-[450px] h-[655px] md:h-[620px] z-2"
+        direction={"vertical"}
+        loop={true}
+        slidesPerView={1}
+      >
+        {swiperSlides.map((slide, index) => (
+          <SwiperSlide key={index}>{slide}</SwiperSlide>
+        ))}
+      </Swiper>
+      <Navigator slideUp={handleSlidePrev} slideDown={handleSlideNext} />
     </div>
   );
 };
