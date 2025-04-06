@@ -2,15 +2,18 @@ import { FaArrowRotateLeft } from "react-icons/fa6";
 import { AnswerOption } from "./answerOption";
 
 export const Flashcard = ({
-  flashCard: { category, term, def },
+  flashCard: {category, term, def},
   isFlipped,
   setIsFlipped,
   choices = [],
   mode,
 }) => {
+
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
+    console.log(term)
   };
+
   return (
     <div className="flex flex-col items-center bg-[#0047AB] text-white border-[3px] border-black md:h-[600px] h-[550px] w-[350px] rounded-[10px] relative">
       <h2 className="font-bold text-[30px] text-center mt-[10px] mb-[5px]">

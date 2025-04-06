@@ -31,7 +31,7 @@ export const UserPage = () => {
     { card: swiperCardExample },
   ];
 
-  console.log(swiperSlides);
+  // console.log(swiperSlides);
 
   return (
     <div className="relative overflow-hidden min-h-screen">
