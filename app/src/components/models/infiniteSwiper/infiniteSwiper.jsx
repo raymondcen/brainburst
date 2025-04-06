@@ -15,8 +15,8 @@ export const InfinteSwiper = () => {
   useEffect(() => {
     const fetchCards = async () => {
       const data = await getCardData();
+      console.log(data)
       setCards(data);
-      setIsLoading(false);
     };
     fetchCards();
   }, []);
@@ -33,13 +33,21 @@ export const InfinteSwiper = () => {
   const handleSlideNext = () => {
     if (swiperRef.current) {
       swiperRef.current.swiper.slideNext();
+      console.log(cards)
     }
   };
 
   const handleSlidePrev = () => {
     if (swiperRef.current) {
       swiperRef.current.swiper.slidePrev();
+      console.log(cards)
+
     }
+  };
+
+  const onSlideChange = (swiper) => {
+    // Use realIndex so that the index is correct when looping is enabled
+    setActiveCard(swiper.realIndex);
   };
 
   return (
@@ -56,6 +64,7 @@ export const InfinteSwiper = () => {
           onlyInViewport: false,
           pageUpDown: true,
         }}
+        onSlideChange={onSlideChange}
         ref={swiperRef}
         className="w-[350px] md:w-[450px] h-[655px] md:h-[620px] z-2"
         direction={"vertical"}
@@ -65,9 +74,13 @@ export const InfinteSwiper = () => {
         {swiperSlides.map((slide, index) => (
           <SwiperSlide key={index}>{slide}</SwiperSlide>
         ))}
-        
       </Swiper>
-      <Navigator slideUp={handleSlidePrev} slideDown={handleSlideNext} />
+      <Navigator
+        slideUp={handleSlidePrev}
+        slideDown={handleSlideNext}
+        currentCard={activeCard}
+        totalCards={cards.length}
+      />
     </div>
   );
 };
