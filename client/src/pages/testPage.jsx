@@ -7,11 +7,12 @@ export const TestPage = () => {
     const getCardData = async () => {
         const { data: { user }, error: userError } = await supabase.auth.getUser(); //get user id
         
+        
         //sql query
         const { data, error } = await supabase
             .from('card')
             .select('*')
-            .eq('uid', user.id);
+            // .eq('uid', user.id);
 
         //error catching
         if (error) {
@@ -20,6 +21,8 @@ export const TestPage = () => {
             console.log('Fetched cards:', data);
         }
     };
+
+    
 
     return (
         <>
