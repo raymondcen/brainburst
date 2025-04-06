@@ -3,8 +3,6 @@ import { getAllCategory } from "../../../../hooks/dbHooks";
 import { useState, useEffect } from "react";
 
 
-
-
 export const CategoryPopUp =({onClose})=>{
     
     const[categories, setCategories] = useState([])

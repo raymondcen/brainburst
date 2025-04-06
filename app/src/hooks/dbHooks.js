@@ -51,6 +51,23 @@ export const addCard = async (newCard) =>{
     }
 }
 
+
+export const getCardCount = async()=>{
+    const { data: { user }, error: userError } = await supabase.auth.getUser(); //get user id
+    //sql query
+    const { data, error } = await supabase
+        .from('card')
+        .select('*', { count: 'exact' })        // .eq('uid', user.id);
+
+    //error catching
+    if (error) {
+        console.error('Error getting row count:', userError);
+    } else {
+        // console.log('Fetched cards:', data);
+    }
+    return data
+}
+
 export const deleteCard = async (cardId) => {
     const { data: { user }, error: userError } = await supabase.auth.getUser(); //get user id
     
@@ -58,7 +75,7 @@ export const deleteCard = async (cardId) => {
     const { data, error } = await supabase
         .from('card')
         .delete()
-        .eq('id', cardId)
+        .eq('cid', cardId)
         // .eq('uid', user.id);
 
     //error catching
@@ -69,3 +86,5 @@ export const deleteCard = async (cardId) => {
     }
     return data;
 }
+
+

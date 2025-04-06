@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigator } from "../navigator/navigator";
+import { IconButton } from "../../common/iconButton";
+import { FiTrash2 } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/mousewheel";
 import { Mousewheel, Keyboard } from "swiper/modules";
-import { getCardData } from "../../../hooks/dbHooks";
+import { getCardData, deleteCard } from "../../../hooks/dbHooks";
 import { flashcardToSwiperCard } from "../../../services/flashcardToSwiperCard";
 import { generateChoices } from "../../../services/generateChoices";
 
@@ -18,7 +20,6 @@ export const InfinteSwiper = () => {
     const fetchCards = async () => {
       const data = await getCardData();
       setCards(data);
-      setIsLoading(false);
     };
     fetchCards();
   }, []);
@@ -51,6 +52,30 @@ export const InfinteSwiper = () => {
     if (swiperRef.current) {
       swiperRef.current.swiper.slidePrev();
     }
+  };
+
+  // Delete the current card using activeCard as the index to obtain its cid
+  const handleDeleteCard = async () => {
+    if (cards.length === 0) return;
+    const currentCard = cards[activeCard];
+    const cid = currentCard?.cid; // Using count to extract card id (cid)
+    if (cid) {
+      console.log(`Deleting card with ID: ${cid}`);
+      await deleteCard(cid);
+      const updatedCards = cards.filter((_, index) => index !== activeCard);
+      setCards(updatedCards);
+      // Adjust activeCard if necessary
+      if (updatedCards.length > 0) {
+        setActiveCard(Math.min(activeCard, updatedCards.length - 1));
+      } else {
+        setActiveCard(0);
+      }
+    }
+  };
+
+  const onSlideChange = (swiper) => {
+    // Use realIndex so that the index is correct when looping is enabled
+    setActiveCard(swiper.realIndex);
   };
 
   return (
