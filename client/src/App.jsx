@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AuthForm from "./components/models/signup/authForm"
+import LandingPage from "./pages/landingPage";
 import TestPage from "./pages/TestPage";
 import AuthRoute from "./components/authRoute";
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AuthForm />} />
+        <Route path="/" element={<LandingPage />} />
         <Route
           path="/testPage"
           element={
