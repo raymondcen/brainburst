@@ -19,10 +19,10 @@ export const CategoryPopUp =({onClose})=>{
       }, []);
 
     return(
-        <div className = "absolute bg-black items-center justify-center">
-            <div className="w-[300px] h-[300px] bg-blue-950 border-3">
+        <div className="absolute bg-black items-center justify-center">
+         <div className="relative w-[350px] h-[550px] md:h-[600px] bg-blue-950 border-3">
             <button onClick={onClose}>
-                <IoClose className="justify-right"/>
+            <IoClose className="absolute right-[10px] justify-right items-end text-[35px] cursor-pointer" />
             </button>
 
 
