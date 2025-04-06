@@ -60,7 +60,7 @@ export const InfinteSwiper = () => {
         mousewheel={{
           forceToAxis: true,
           releaseOnEdges: true,
-          thresholdDelta: 20,
+          thresholdDelta: 50,
         }}
         keyboard={{
           enabled: true,
