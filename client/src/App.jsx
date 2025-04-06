@@ -1,15 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthForm } from "./components/models/signup/signup";
-import { TestPage } from "./pages/testPage";
+import AuthForm from "./components/models/signup/authForm"
+import TestPage from "./pages/TestPage";
+import AuthRoute from "./components/authRoute";
 
-export default function App() {
+function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<AuthForm />} />
-        {/* delete later */}
-        <Route path="/testPage" element={<TestPage />} /> 
+        <Route
+          path="/testPage"
+          element={
+            <AuthRoute>
+              <TestPage />
+            </AuthRoute>
+          }
+        />
+        {/* Add other protected routes the same way */}
       </Routes>
     </Router>
   );
 }
+
+export default App;

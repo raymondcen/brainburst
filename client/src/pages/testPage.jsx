@@ -1,7 +1,7 @@
 import React from 'react';
 import { supabase } from '../services/supabaseClient';
 
-export const TestPage = () => {
+export default function TestPage ()  {
 
     
     const getCardData = async () => {
