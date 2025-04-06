@@ -11,3 +11,68 @@
 body {
     background: #002251;
 }
+
+/* Card Flip Style */
+
+.flashcard-container {
+    width: 350px;
+    height: 550px;
+    perspective: 1000px;
+  }
+  
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+  
+  .flashcard-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard-front,
+  .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(to bottom, #0147aa, #001738);
+  }
+  
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+}  
+  
+  .top-blur {
+    position: absolute;
+    left: -20px;
+    top: -30px;
+    width: 225px;
+    height: 300px;
+    background-color: #2d77df;
+    z-index: 0;
+    border-radius: 100%;
+    filter: blur(100px);
+  }
+  
+  .bottom-blur {
+    position: absolute;
+    bottom: -60px;
+    width: 150px;
+    height: 150px;
+    background-color: #2d77df;
+    z-index: 0;
+    border-radius: 100%;
+    filter: blur(100px);
+  }
