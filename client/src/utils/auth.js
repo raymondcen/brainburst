@@ -1,6 +1,7 @@
+import { supabase } from '../services/supabaseClient';
+
 export async function signUp(email, password) {
-  // User sign up
-  const { data, error } = await supabase.auth.signUp({
+  const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -8,22 +9,34 @@ export async function signUp(email, password) {
     },
   });
 
-  if (error) {
-    return { error };
+  if (signUpError) {
+    return { error: signUpError };
   }
 
-  // Insert the user
-  const user = data.user;
+  const user = signUpData.user;
 
-  const { error: insertError } = await supabase.from("users").insert([
+  const { error: insertError } = await supabase.from("profiles").insert([
     {
-      uid: user.id,
+      id: user.id,
       interests: [],
     },
   ]);
 
   if (insertError) {
     return { error: insertError };
+  }
+
+  return { data: signUpData };
+}
+
+export async function logIn(email, password) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    return { error };
   }
 
   return { data };

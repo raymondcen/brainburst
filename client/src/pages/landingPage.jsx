@@ -1,9 +1,9 @@
-import { SignUp } from "../components/models/signUp/signUp";
+import { AuthForm } from "../components/models/signup/authForm";
 
 export const LandingPage = () => {
   return (
     <div>
-      <SignUp />
+      <AuthForm />
     </div>
   );
 };
