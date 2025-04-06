@@ -19,7 +19,7 @@ export const Flashcard = ({
   const toggleShowAnswer = () => setShowAnswer((prev) => !prev);
 
   return (
-    <div className="flex flex-col items-center bg-[#012556] text-white border-[3px] border-black md:h-[600px] h-[550px] w-[350px] rounded-[10px] relative bg-gradient-to-b from-[#0147aa] to-[#001738]">
+    <div className="flex flex-col items-center bg-[#012556] text-white border-[3px] border-black md:h-[600px] h-[550px] w-[350px] rounded-[10px] relative bg-gradient-to-b from-[#0147aa] to-[#001738] overflow-hidden">
       {/* Top Blur */}
       <div className="absolute left-[-20px] top-[-30px] w-[225px] h-[300px] bg-[#2d77df] z-[0] rounded-full blur-[100px]" />
 
