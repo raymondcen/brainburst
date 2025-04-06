@@ -1,32 +1,18 @@
 import { supabase } from '../services/supabaseClient';
 
 export async function signUp(email, password) {
-  const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      emailRedirectTo: "http://localhost:5173/welcome",
+      emailRedirectTo: "http://localhost:5173/testPage",
     },
   });
 
-  if (signUpError) {
-    return { error: signUpError };
+  if (!error) {
+    alert("Check your email to verify your account before logging in.");
   }
-
-  const user = signUpData.user;
-
-  const { error: insertError } = await supabase.from("profiles").insert([
-    {
-      id: user.id,
-      interests: [],
-    },
-  ]);
-
-  if (insertError) {
-    return { error: insertError };
-  }
-
-  return { data: signUpData };
+  return { data, error };
 }
 
 export async function logIn(email, password) {
@@ -35,9 +21,15 @@ export async function logIn(email, password) {
     password,
   });
 
-  if (error) {
-    return { error };
+  if (!error  && data?.user) {
+    if(data.user.email_confirmed_at){
+      window.location.href = "http://localhost:5173/testPage";
+
+    } else {
+      alert("Check your email to verify your account before using.");
+      await supabase.auth.signOut();
+    }
   }
 
-  return { data };
+  return { data, error };
 }
