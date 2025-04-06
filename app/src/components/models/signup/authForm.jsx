@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { signUp, logIn } from "../../../utils/auth.js";
 
-// 
 export const AuthForm = () => {
   // Start in login mode
   const [mode, setMode] = useState("login");
