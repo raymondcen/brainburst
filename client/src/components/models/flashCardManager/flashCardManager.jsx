@@ -1,4 +1,4 @@
-import { FlashCardManagerButton } from "../../common/flashCardManagerButton";
+import { FlashCardManagerButton } from "../../common/iconButton";
 import { FaList, FaPlus, FaMinus, FaEdit } from "react-icons/fa";
 
 export const FlashCardManager = () => {
