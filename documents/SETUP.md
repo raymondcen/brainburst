@@ -33,8 +33,12 @@
 - Enable Email/Password Sign-in
 - Copy your Project URL and Anon Public Key
 
+## 4.Get a Gemini API key
+- Go to https://aistudio.google.com/app/apikey?_gl=1*o4qp5n*_ga*MTQ3MjMxNTIyOS4xNzQzNzg0MDkw*_ga_P1DBVKWT6V*MTc0Mzk2NzYxMC42LjEuMTc0Mzk2ODIzOS42MC4wLjIwOTU0MjEzNTk
+- Click on create an API key
+- Copy the API key
 
-## 4. Add required .env for local development
+## 5. Add required .env for local development
 - Create a `.env` file and add:
     ```bash
   VITE_BACKEND_URL="http://localhost:3000"
@@ -43,7 +47,7 @@
   VITE_SUPABASE_ANON_KEY=your-anon-key
   VITE_GOOGLE_AI_KEY=your-google-ai-key
   ```
-## 5. Local Development Instructions
+## 6. Local Development Instructions
 - npm run dev
 - o + enter to open website
 - q + enter to stop running
