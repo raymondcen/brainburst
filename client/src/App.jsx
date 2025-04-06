@@ -1,10 +1,11 @@
-import LandingPage from "./pages/landingPage";
-import UserPage from "./pages/userPage";
+import { SignUp } from "./components/models/signup/signup";
+import { TestPage } from "./pages/testPage";
 
 export default function App() {
   return (
     <div>
-      <UserPage />
+      {/* <SignUp /> */}
+      <TestPage/>
     </div>
   );
 }
