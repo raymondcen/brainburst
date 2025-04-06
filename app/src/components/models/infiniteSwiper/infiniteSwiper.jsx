@@ -43,6 +43,7 @@ export const InfinteSwiper = ({ swiperSlides }) => {
         {swiperSlides.map((slide, index) => (
           <SwiperSlide key={index}>{slide}</SwiperSlide>
         ))}
+        
       </Swiper>
       <Navigator slideUp={handleSlidePrev} slideDown={handleSlideNext} />
     </div>

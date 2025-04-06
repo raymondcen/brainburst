@@ -50,3 +50,22 @@ export const addCard = async (newCard) =>{
         // console.log('Fetched cards:', data);
     }
 }
+
+
+export const getCardCount = async()=>{
+    const { data: { user }, error: userError } = await supabase.auth.getUser(); //get user id
+    //sql query
+    const { data, error } = await supabase
+        .from('card')
+        .select('*', { count: 'exact' })        // .eq('uid', user.id);
+
+    //error catching
+    if (error) {
+        console.error('Error getting row count:', userError);
+    } else {
+        // console.log('Fetched cards:', data);
+    }
+    return data;
+}
+
+
