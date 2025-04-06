@@ -32,7 +32,7 @@ export const UserPage = () => {
     { card: swiperCardExample },
   ];
 
-  console.log(swiperSlides);
+  // console.log(swiperSlides);
 
   return (
     <div>

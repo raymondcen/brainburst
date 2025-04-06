@@ -25,7 +25,7 @@ export const getAllCategory = async () => {
     //sql query
     const { data, error } = await supabase
         .from('card')
-        .select('category', { distinct: true })
+        .select('category', {distinct: true })
 
         // .eq('uid', user.id);
 
@@ -37,3 +37,20 @@ export const getAllCategory = async () => {
     }
     return data;
 };
+
+export const addCard = async (newCard) =>{
+    const { data: { user }, error: userError } = await supabase.auth.getUser(); //get user id
+    
+    //sql query
+    const { data, error } = await supabase
+        .from('card')
+        .insert({category: newCard.category, term: newCard.term, def: newCard.def, uid: user.id })
+        // .eq('uid', user.id);
+
+    //error catching
+    if (error) {
+        console.error('Error ad card:', userError);
+    } else {
+        // console.log('Fetched cards:', data);
+    }
+}
