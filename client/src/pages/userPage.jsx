@@ -33,7 +33,7 @@ export const UserPage = () => {
         <div className="flex flex-col items-center mt-[10px] z-[2]">
           <div className="flex md:flex-row flex-col">
             <Flashcard
-              flashCard={flashCardExample1[i]}
+              flashCard={flashCardExample1[counter]}
               isFlipped={isFlipped}
               setIsFlipped={handleFlip}
               choices={choices}
