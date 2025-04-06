@@ -65,6 +65,25 @@ export const getCardCount = async()=>{
     } else {
         // console.log('Fetched cards:', data);
     }
+    return data
+}
+
+export const deleteCard = async (cardId) => {
+    const { data: { user }, error: userError } = await supabase.auth.getUser(); //get user id
+    
+    //sql query
+    const { data, error } = await supabase
+        .from('card')
+        .delete()
+        .eq('id', cardId)
+        // .eq('uid', user.id);
+
+    //error catching
+    if (error) {
+        console.error('Error deleting card:', error);
+    } else {
+        // console.log('Fetched cards:', data);
+    }
     return data;
 }
 
