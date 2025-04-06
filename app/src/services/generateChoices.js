@@ -23,15 +23,12 @@ export const generateChoices = async (term, definition) => {
     });
     const formattedResult = result.response.text().split(",");
 
-    const parsedObjects = formattedResult.map(str => {
-        // Clean up whitespace and trailing characters
-        const cleaned = str.trim().replace(/;$/, "");
-      
-        // Replace single JS object syntax with JSON-compatible format
-        const jsonReady = cleaned.replace(/(\w+):/g, '"$1":');
-      
-        return JSON.parse(jsonReady);
-      });
+    const parsedObjects = formattedResult.map((str) => {
+      const cleaned = str.trim().replace(/;$/, "");
+      const jsonReady = cleaned.replace(/(\w+):/g, '"$1":');
+
+      return JSON.parse(jsonReady);
+    });
     return parsedObjects;
   } catch (error) {
     console.error("Error generating choices:", error);
