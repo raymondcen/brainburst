@@ -12,10 +12,9 @@
 Create a `.env` file and add:
 VITE_BACKEND_URL="http://localhost:3000"
 VITE_FRONTEND_URL="http://localhost:5173"
-VITE_SUPABASE_URL="https://yqceeooyzqiwjdxqmdfc.supabase.co"
-VITE_SUPABASE_PUBLIC_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlxY2Vlb295enFpd2pkeHFtZGZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4NzgzNjMsImV4cCI6MjA1OTQ1NDM2M30.LDpr6yA3887-K1iJW4maZjWazgMqKi4I3DZHBwfaDVU"
-VITE_GOOGLE_AI_KEY="AIzaSyD2FhVIlRqvPzsbUJfyje1pvuYIz5ego8I"
-
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_GOOGLE_AI_KEY=your-google-ai-key
 
 ## Local Development Instructions
 - npm run dev
