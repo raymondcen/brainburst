@@ -41,7 +41,7 @@ export const AuthForm = () => {
             </>
           ) : (
             <>
-              Already have an account?{" "}
+              Already Have An Account{" "}
               <button onClick={() => setMode("login")} className="text-[#0047AB] hover:underline">Log in</button>
             </>
           )}
