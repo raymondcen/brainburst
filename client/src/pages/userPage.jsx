@@ -2,6 +2,8 @@ import { Navigator } from "../components/models/navigator/navigator";
 import { SwiperCard } from "../components/models/swiperCard/swiperCard";
 
 export const UserPage = () => {
+
+  
   return (
     <div>
       {/* Top blur */}

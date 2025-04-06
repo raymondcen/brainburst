@@ -10,7 +10,7 @@ export const LandingPage = () => {
       console.log(userAuth);
 
       if (!userAuth) return;
-      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/testPage`;
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/userPage`;
     };
     fetchUserAuth();
   }, []);

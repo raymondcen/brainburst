@@ -5,7 +5,7 @@ export async function signUp(email, password) {
     email,
     password,
     options: {
-      emailRedirectTo: `${import.meta.env.VITE_FRONTEND_URL}/testPage`,
+      emailRedirectTo: `${import.meta.env.VITE_FRONTEND_URL}/userPage`,
     },
   });
 
@@ -23,7 +23,7 @@ export async function logIn(email, password) {
 
   if (!error  && data?.user) {
     if(data.user.email_confirmed_at){
-      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/testPage`;
+      window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/userPage`;
 
     } else {
       alert("Check your email to verify your account before using.");
