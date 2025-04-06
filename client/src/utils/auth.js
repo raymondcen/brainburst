@@ -22,6 +22,8 @@ export async function signUp(email, password) {
     },
   ]);
 
+  // skjdhfksjdhfs
+
   if (insertError) {
     return { error: insertError };
   }
