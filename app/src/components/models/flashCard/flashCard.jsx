@@ -4,10 +4,11 @@ import { MdSchool } from "react-icons/md";
 import { PiGearSixFill } from "react-icons/pi";
 import { AnswerOption } from "./AnswerOption";
 
-export const Flashcard = ({
-  flashCard: { category, term, def },
-  choices = [],
-}) => {
+export const Flashcard = ({ flashCard, choices = [] }) => {
+  if (!flashCard) return <div>Loading...</div>;
+
+  const { category, term, def } = flashCard;
+
   const [isLearnMode, setIsLearnMode] = useState(true); // true for Learn mode, false for Practice mode
   const [showAnswer, setShowAnswer] = useState(false); // false to show term/question, true to show answer/definition or choices
 

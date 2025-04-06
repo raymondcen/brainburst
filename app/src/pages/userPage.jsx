@@ -4,41 +4,26 @@ import { getCardData } from "../hooks/dbHooks";
 import { flashcardToSwiperCard } from "../services/flashcardToSwiperCard";
 
 export const UserPage = () => {
+  const [cards, setCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const[cards, setCards] = useState([])
-  
   useEffect(() => {
-      const fetchCards = async () => {
-        const data = await getCardData();
-        setCards(data);
-      };
-      fetchCards();
+    const fetchCards = async () => {
+      const data = await getCardData();
+      setCards(data);
+      setIsLoading(false);
+    };
+    fetchCards();
   }, []);
-  console.log(cards)
-
-  const flashCardExample1 = {
-    category: "Computer Science",
-    term: "Function",
-    def: "A block of code designed to perform a particular task.",
-    cid: 1,
-  };
 
   const choices = [
-    { answer: `${flashCardExample1.def}` },
-    { answer: "A data structure that stores a collection of elements." },
-    { answer: "A type of variable that can hold multiple values." },
-    { answer: "A programming language used for web development." },
+    { answer: "Choice 1" },
+    { answer: "Choice 2" },
+    { answer: "Choice 3" },
+    { answer: "Choice 4" },
   ];
 
-  const swiperCardExample = {
-    flashCard: flashCardExample1,
-    choices: choices,
-    mode: "practice",
-  };
-
   const swiperSlides = flashcardToSwiperCard(cards, choices, "learn");
-
-  console.log(swiperSlides);
 
   return (
     <div className="relative overflow-hidden min-h-screen">
@@ -47,11 +32,13 @@ export const UserPage = () => {
         <div className="absolute bg-[#003a8b] w-[50vw] h-[50vw] z-[-1] self-center rounded-[764px] min-w-[450px] min-h-[450px] top-[-200px] blur-[100px]"></div>
       </div>
 
-      {/* Content div */}
-      <div className="flex flex-row items-center justify-center">
-        <InfinteSwiper
-          swiperSlides={swiperSlides} />
-      </div>
+      {isLoading ? (
+        <div className="flex items-center justify-center h-full">Loading...</div>
+      ) : (
+        <div className="flex flex-row items-center justify-center">
+          <InfinteSwiper swiperSlides={swiperSlides} />
+        </div>
+      )}
 
       {/* Bottom blur */}
       <div>
