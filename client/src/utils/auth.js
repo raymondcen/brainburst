@@ -22,16 +22,12 @@ export async function signUp(email, password) {
     },
   ]);
 
-  // skjdhfksjdhfs
-
   if (insertError) {
     return { error: insertError };
   }
 
   return { data: signUpData };
 }
-
-
 
 export async function logIn(email, password) {
   const { data, error } = await supabase.auth.signInWithPassword({
