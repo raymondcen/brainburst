@@ -1,5 +1,4 @@
-import { Navigator } from "../components/models/navigator/navigator";
-import { InfinteSwiper } from "../components/ui/infiniteSwiper";
+import { InfinteSwiper } from "../components/models/infiniteSwiper/infiniteSwiper";
 import { useState } from "react";
 
 export const UserPage = () => {
@@ -35,7 +34,7 @@ export const UserPage = () => {
   // console.log(swiperSlides);
 
   return (
-    <div>
+    <div className="relative overflow-hidden min-h-screen">
       {/* Top blur */}
       <div className="flex items-center justify-center">
         <div className="absolute bg-[#003a8b] w-[50vw] h-[50vw] z-[-1] self-center rounded-[764px] min-w-[450px] min-h-[450px] top-[-200px] blur-[100px]"></div>
@@ -45,7 +44,6 @@ export const UserPage = () => {
       <div className="flex flex-row items-center justify-center">
         <InfinteSwiper
           swiperSlides={swiperSlides} />
-        <Navigator />
       </div>
 
       {/* Bottom blur */}
