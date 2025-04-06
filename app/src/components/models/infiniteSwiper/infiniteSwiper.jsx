@@ -7,6 +7,9 @@ import "swiper/css";
 import "swiper/css/mousewheel";
 
 export const InfinteSwiper = ({ swiperSlides }) => {
+
+  console.log(swiperSlides);
+
   const swiperRef = useRef(null);
 
   const handleSlideNext = () => {

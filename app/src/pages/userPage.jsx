@@ -1,7 +1,21 @@
 import { InfinteSwiper } from "../components/models/infiniteSwiper/infiniteSwiper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getCardData } from "../hooks/dbHooks";
+import { flashcardToSwiperCard } from "../services/flashcardToSwiperCard";
 
 export const UserPage = () => {
+
+  const[cards, setCards] = useState([])
+  
+  useEffect(() => {
+      const fetchCards = async () => {
+        const data = await getCardData();
+        setCards(data);
+      };
+      fetchCards();
+  }, []);
+  console.log(cards)
+
   const flashCardExample1 = {
     category: "Computer Science",
     term: "Function",
@@ -22,13 +36,9 @@ export const UserPage = () => {
     mode: "practice",
   };
 
-  const swiperSlides = [
-    { card: swiperCardExample },
-    { card: swiperCardExample },
-    { card: swiperCardExample },
-    { card: swiperCardExample },
-    { card: swiperCardExample },
-  ];
+  const swiperSlides = flashcardToSwiperCard(cards, choices, "learn");
+
+  console.log(swiperSlides);
 
   return (
     <div className="relative overflow-hidden min-h-screen">
