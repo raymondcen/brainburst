@@ -12,7 +12,7 @@ export const Flashcard = ({
     setIsFlipped(!isFlipped);
   };
   return (
-    <div className="flex flex-col items-center bg-[#0047AB] text-white border-[3px] border-black h-[600px] w-[350px] rounded-[10px]">
+    <div className="flex flex-col items-center bg-[#0047AB] text-white border-[3px] border-black h-[600px] w-[350px] rounded-[10px] relative">
       <h2 className="font-bold text-[30px] text-center mt-[20px] mb-[50px]">
         {category}
       </h2>

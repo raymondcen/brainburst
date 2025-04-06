@@ -1,5 +1,6 @@
 import { Flashcard } from "../components/models/flashCard/flashCard";
 import { useState } from "react";
+import { FlashCardManager } from "../components/models/flashCardManager/flashCardManager";
 
 const flashCardExample1 = {
   category: "Computer Science",
@@ -9,10 +10,10 @@ const flashCardExample1 = {
 };
 
 const choices = [
-  {answer: `${flashCardExample1.def}`},
-  {answer: "A data structure that stores a collection of elements."},
-  {answer: "A type of variable that can hold multiple values."},
-  {answer: "A programming language used for web development."}
+  { answer: `${flashCardExample1.def}` },
+  { answer: "A data structure that stores a collection of elements." },
+  { answer: "A type of variable that can hold multiple values." },
+  { answer: "A programming language used for web development." },
 ];
 
 export const UserPage = () => {
@@ -27,13 +28,16 @@ export const UserPage = () => {
         <div className="absolute bg-[#003a8b] w-[50vw] h-[50vw] z-[-1] self-center rounded-[764px] min-w-[450px] min-h-[450px] top-[-200px] blur-[100px]"></div>
       </div>
       <div className="flex flex-col items-center mt-[10px]">
-        <Flashcard
-          flashCard={flashCardExample1}
-          isFlipped={isFlipped}
-          setIsFlipped={handleFlip}
-          choices={choices}
-          mode="practice"
-        />
+        <div className="flex flex-row">
+          <Flashcard
+            flashCard={flashCardExample1}
+            isFlipped={isFlipped}
+            setIsFlipped={handleFlip}
+            choices={choices}
+            mode="practice"
+          />
+          <FlashCardManager />
+        </div>
       </div>
       {/* Bottom blurs */}
       <div>
