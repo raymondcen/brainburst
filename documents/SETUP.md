@@ -9,11 +9,16 @@
 - npm i
 
 ## Add required .env for local development
-Create a `.env` file and add:
+- Create a `.env` file and add:
+
 VITE_BACKEND_URL="http://localhost:3000"
+
 VITE_FRONTEND_URL="http://localhost:5173"
+
 VITE_SUPABASE_URL=https://your-project.supabase.co
+
 VITE_SUPABASE_ANON_KEY=your-anon-key
+
 VITE_GOOGLE_AI_KEY=your-google-ai-key
 
 ## Local Development Instructions
