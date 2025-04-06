@@ -27,10 +27,10 @@ export const Flashcard = ({
           <div className="top-blur"></div>
 
           {/* Content */}
-          <h2 className="font-bold text-[30px] text-center mt-[10px] mb-[5px] z-[1]">
+          <h2 className="font-bold text-[30px] text-center mt-[10px] mb-[5px] z-[3]">
             {category}
           </h2>
-          <p className="font-semibold text-[20px] text-center">
+          <p className="font-semibold text-[20px] text-center z-[3]">
             Question/Term: {term}
           </p>
 
@@ -63,7 +63,7 @@ export const Flashcard = ({
           </h2>
           {isLearnMode ? (
             // Learn Mode: Show Answer/Definition
-            <p className="font-semibold text-[20px] text-center">
+            <p className="font-semibold text-[20px] text-center z-[3]">
               Answer/Definition: {def}
             </p>
           ) : (
