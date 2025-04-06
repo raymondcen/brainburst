@@ -17,7 +17,6 @@ export const SwiperCard = ({ flashCard, choices, mode }) => {
           choices={choices}
           mode={mode}
         />
-        <FlashCardManager flashCard={flashCard} />
       </div>
     </div>
   );
