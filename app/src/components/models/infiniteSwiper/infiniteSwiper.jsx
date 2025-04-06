@@ -111,10 +111,6 @@ export const InfinteSwiper = () => {
           totalCards={cards.length}
         />
       </div>
-      {/* Delete button to remove current card */}
-      <div className="mt-4">
-        <IconButton action={handleDeleteCard} icon={FiTrash2} />
-      </div>
     </div>
   );
 };
