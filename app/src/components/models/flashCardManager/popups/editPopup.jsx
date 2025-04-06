@@ -19,7 +19,7 @@ export const EditPopUp = ({ onClose }) => {
   };
 
   return (
-    <div className="absolute bg-black items-center justify-center">
+    <div className="absolute bg-black items-center justify-center z-[5]">
       <div className="relative w-[350px] h-[550px] md:h-[600px] bg-blue-950 border-3">
         <button onClick={onClose}>
           <IoClose className="absolute right-[10px] justify-right items-end text-[35px] cursor-pointer" />
