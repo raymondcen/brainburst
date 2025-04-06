@@ -8,11 +8,13 @@ import "swiper/css/mousewheel";
 import { Mousewheel, Keyboard } from "swiper/modules";
 import { getCardData, deleteCard } from "../../../hooks/dbHooks";
 import { flashcardToSwiperCard } from "../../../services/flashcardToSwiperCard";
+import { generateChoices } from "../../../services/generateChoices";
 
 export const InfinteSwiper = () => {
   const [cards, setCards] = useState([]);
   const [activeCard, setActiveCard] = useState(0);
   const swiperRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -28,6 +30,15 @@ export const InfinteSwiper = () => {
     { answer: "Choice 3" },
     { answer: "Choice 4" },
   ];
+
+  const testingAI = async () => {
+    const term = "Function";
+    const definition = "A block of code designed to perform a particular task.";
+    const response = await generateChoices(term, definition);
+
+    console.log(response);
+  }
+  testingAI();
 
   const swiperSlides = flashcardToSwiperCard(cards, choices, "learn");
 
