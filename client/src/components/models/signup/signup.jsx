@@ -18,6 +18,9 @@ export const AuthForm = () => {
       const { error, data } = await logIn(email, password);
       console.log({ error, data });
     }
+
+    setEmail("");
+    setPassword("");
   };
 
   return (
