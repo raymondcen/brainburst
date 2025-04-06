@@ -1,12 +1,34 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigator } from "../navigator/navigator";
 import "swiper/css";
 import "swiper/css/mousewheel";
 import { Mousewheel, Keyboard } from "swiper/modules";
+import { getCardData } from "../../../hooks/dbHooks";
+import { flashcardToSwiperCard } from "../../../services/flashcardToSwiperCard";
 
-export const InfinteSwiper = ({ swiperSlides }) => {
+export const InfinteSwiper = () => {
+  const [cards, setCards] = useState([]);
+  const [activeCard, setActiveCard] = useState(0);
   const swiperRef = useRef(null);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      const data = await getCardData();
+      setCards(data);
+      setIsLoading(false);
+    };
+    fetchCards();
+  }, []);
+
+  const choices = [
+    { answer: "Choice 1" },
+    { answer: "Choice 2" },
+    { answer: "Choice 3" },
+    { answer: "Choice 4" },
+  ];
+
+  const swiperSlides = flashcardToSwiperCard(cards, choices, "learn");
 
   const handleSlideNext = () => {
     if (swiperRef.current) {

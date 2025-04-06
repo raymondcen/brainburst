@@ -3,6 +3,7 @@ import { FaList, FaPlus, FaMinus, FaEdit } from "react-icons/fa";
 import { useState } from "react";
 import { CategoryPopUp } from "./popups/categoryPopup";
 import { AddPopUp } from "./popups/addPopup";
+import { deleteCard } from "../../../hooks/dbHooks";
 
 export const FlashCardManager = () => {
   const [categoryMenu, setCategoryMenu] = useState(false)
