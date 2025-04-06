@@ -1,11 +1,7 @@
 import { IoClose } from "react-icons/io5";
-import { getAllCategory } from "../../../../hooks/dbHooks";
 
 
-const categories = await getAllCategory()
-console.log(categories);
-export const CategoryPopUp =({onClose})=>{
-
+export const AddPopUp =({onClose})=>{
 
     return(
         <div className = "absolute bg-black items-center justify-center">
