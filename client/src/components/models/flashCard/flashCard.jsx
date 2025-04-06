@@ -1,6 +1,5 @@
 import { FaArrowRotateLeft } from "react-icons/fa6";
 import { AnswerOption } from "./answerOption";
-import { getCardData } from "../../../hooks/dbHooks";
 
 export const Flashcard = ({
   flashCard: {category, term, def},
