@@ -32,11 +32,20 @@ body {
     transform: rotateY(180deg);
   }
 
-  .flashcard-front,
-  .flashcard-back {
+  .flashcard-front, .flashcard-back {
     position: absolute;
     backface-visibility: hidden;
+    pointer-events: auto; /* enable when visible */
   }
+
+.flashcard-inner.flashcard-flipped .flashcard-front {
+  pointer-events: none;
+}
+
+.flashcard-inner:not(.flashcard-flipped) .flashcard-back {
+  pointer-events: none;
+}
+
 
 
 .flashcard-back {
