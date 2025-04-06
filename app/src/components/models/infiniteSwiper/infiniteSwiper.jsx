@@ -84,7 +84,7 @@ export const InfinteSwiper = () => {
             <SwiperSlide key={index}>{slide}</SwiperSlide>
           ))}
         </Swiper>
-        <FlashCardManager flashCard={activeCard} />
+        <FlashCardManager flashCard={cards[activeCard]} />
         <Navigator
           slideUp={handleSlidePrev}
           slideDown={handleSlideNext}

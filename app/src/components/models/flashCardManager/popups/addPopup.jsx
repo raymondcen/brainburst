@@ -82,7 +82,7 @@ export const AddPopUp = ({ onClose }) => {
               type="submit"
               id="submit"
             >
-              Add Task
+              Add Card
             </button>
           </p>
         </form>
